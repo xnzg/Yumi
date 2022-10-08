@@ -15,4 +15,5 @@ The package currently does the following:
 - Some useful collections:
     - `SortedArray`.
 - Some handy utilities:
-    - `countEach(where:)` as a replacement for [SE-0220](https://github.com/apple/swift-evolution/blob/main/proposals/0220-count-where.md). 
+    - `countEach(where:)` as a replacement for [SE-0220](https://github.com/apple/swift-evolution/blob/main/proposals/0220-count-where.md).
+    - Some equality helpers: `memoryEqual`, `@MemoryEqual` and `@AlwaysEqual`. 

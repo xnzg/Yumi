@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - '*'
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+jobs:
+  Test:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Obtain llvm-cov
+        run: |
+          # We have to use Ubuntu latest, as Ubuntu 22.04 does not have Swift installed.
+          wget https://apt.llvm.org/llvm.sh
+          chmod +x llvm.sh
+          sudo ./llvm.sh 14 
+          which llvm-cov-14
+          sudo ln -s /usr/bin/llvm-cov-14 /usr/bin/llvm-cov
+          which llvm-cov
+
+      - name: Run tests
+        run: |
+          swift test --enable-code-coverage
+          
+      - name: Test coverage
+        uses: maxep/spm-lcov-action@0.3.0
+        with:
+          output-file: ./coverage.lcov
+
+      - uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.lcov
+          fail_ci_if_error: true

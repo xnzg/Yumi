@@ -38,8 +38,8 @@ public struct MemoryEqual<Value>: Equatable {
 
     @inlinable
     public var projectedValue: MemoryEqual<Value> {
-        get { wrappedValue }
-        set { wrappedValue = newValue }
+        get { self }
+        set { self = newValue }
     }
 }
 
@@ -64,7 +64,7 @@ public struct AlwaysEqual<Value>: Equatable {
 
     @inlinable
     public var projectedValue: AlwaysEqual<Value> {
-        get { wrappedValue }
-        set { wrappedValue = newValue }
+        get { self }
+        set { self = newValue }
     }
 }

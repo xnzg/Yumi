@@ -18,6 +18,12 @@ final class SortedArrayTests: XCTestCase {
         XCTAssertEqual(zs.sorted, [3, 2, 7])
     }
 
+    func testMerging() {
+        let xs: SortedArray = [1, 3, 5]
+        let ys: SortedArray = [2, 3, 4]
+        XCTAssertEqual(xs.merging(ys), [1, 2, 3, 3, 4, 5])
+    }
+
     func testBinarySearch() {
         let xs: SortedArray = [1, 2, 2, 2, 3]
         for x in 0..<4 {

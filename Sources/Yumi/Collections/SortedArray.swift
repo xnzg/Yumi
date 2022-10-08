@@ -1,6 +1,4 @@
-/// A array that keeps its element sorted. It provides binary-search lookup.
-///
-/// One can use `partitionIndex(where:)` to do fast binary search.
+/// An array that keeps its elements sorted. One can use `partitionIndex(where:)` to do fast binary search.
 public struct SortedArray<Element: Comparable>: Equatable {
     @usableFromInline var storage: [Element]
 
@@ -26,6 +24,10 @@ public struct SortedArray<Element: Comparable>: Equatable {
     @inlinable
     public var sorted: [Element] {
         storage
+    }
+
+    public func merging(_ other: Self) -> Self {
+        .init(uncheckedSortedElements: sortedMerging(with: other))
     }
 }
 

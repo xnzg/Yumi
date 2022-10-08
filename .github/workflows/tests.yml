@@ -18,9 +18,7 @@ jobs:
       - name: Run tests
         run: |
           swift test --enable-code-coverage
-          cp $(swift test --show-codecov-path) ./coverage.json
 
       - uses: codecov/codecov-action@v3
         with:
-          files: ./coverage.json
           fail_ci_if_error: true

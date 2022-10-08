@@ -12,4 +12,7 @@ The package currently does the following:
     - `Collections` from [`swift-collections`](https://github.com/apple/swift-collections) by Apple.
 - And some more biased choices:
     - `IdentifiedCollections` from [`swift-identified-collections`](https://github.com/pointfreeco/swift-identified-collections) by [Point-Free](https://www.pointfree.co).
-- `countEach(where:)` as a replacement for [SE-0220](https://github.com/apple/swift-evolution/blob/main/proposals/0220-count-where.md). 
+- Some useful collections:
+    - `SortedArray`.
+- Some handy utilities:
+    - `countEach(where:)` as a replacement for [SE-0220](https://github.com/apple/swift-evolution/blob/main/proposals/0220-count-where.md). 

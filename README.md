@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/xnzg/Yumi/branch/main/graph/badge.svg?token=COVD6RSE3R)](https://codecov.io/gh/xnzg/Yumi)
+
 # Yumi
 Some commonly used functionality.
 
@@ -30,4 +32,4 @@ Also some more biased choices:
 - Some equality helpers: `memoryEqual`, `@MemoryEqual` and `@AlwaysEqual`.
 - `.sortedMerging(...)`, for merging two sorted sequences. There are two variants:
     - The first allows the caller to choose between keeping elements from both sequences or merging.
-    - The second, more specialized one does merging in the fashion of a traditional merge sort.
+    - The second, more specialized one does merging in the fashion of a traditional merge sor

@@ -26,7 +26,7 @@ Also some more biased choices:
 - `SortedArray`.
 
 
-# Utilities:
+### Utilities
 
 - `countEach(where:)` as a replacement for [SE-0220](https://github.com/apple/swift-evolution/blob/main/proposals/0220-count-where.md).
 - Some equality helpers: `memoryEqual`, `@MemoryEqual` and `@AlwaysEqual`.

@@ -24,4 +24,3 @@ jobs:
         with:
           files: ./coverage.json
           fail_ci_if_error: true
-          fixes: "/home/runner/work/Yumi/Yumi/::"

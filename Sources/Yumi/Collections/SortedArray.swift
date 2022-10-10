@@ -27,7 +27,7 @@ public struct SortedArray<Element: Comparable>: Equatable {
     }
 
     public func merging(_ other: Self) -> Self {
-        .init(uncheckedSortedElements: sortedMerging(with: other))
+        .init(uncheckedSortedElements: sortedMerging(other))
     }
 }
 

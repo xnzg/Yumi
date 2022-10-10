@@ -13,6 +13,8 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-algorithms", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/apple/swift-collections", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/pointfreeco/swift-identified-collections", .upToNextMinor(from: "0.4.0")),
+        // Plugins
+        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
     ],
     targets: [
         .target(

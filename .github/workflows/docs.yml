@@ -1,0 +1,43 @@
+# Adopted from 
+# https://github.com/karwa/swift-url/blob/main/.github/workflows/docs.yml
+
+name: Generate Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Checkout gh-pages Branch
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: docs-out
+
+      - name: Clear existing documentation
+        run: |
+          rm -rf docs-out/.git && rm -rf docs-out/main && mkdir -p docs-out/main
+
+      - name: Generate documentation
+        run: |
+          OUTPUT=$(pwd)/docs-out/main
+          swift package --allow-writing-to-directory $OUTPUT \
+            generate-documentation --target Yumi \
+            --disable-indexing \
+            --transform-for-static-hosting \
+            --hosting-base-path Yumi/main \
+            --output-path $OUTPUT
+
+      - name: Push to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.7
+        with:
+          branch: gh-pages
+          folder: docs-out
+          single-commit: true

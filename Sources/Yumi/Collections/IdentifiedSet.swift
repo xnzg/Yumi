@@ -1,7 +1,6 @@
 /// An unordered collection of identifiable elements.
 ///
 /// This is a thin wrapper over `Dictionary`.
-@available(iOS 13, macOS 10.15, macCatalyst 13, tvOS 13, watchOS 6, *)
 public struct IdentifiedSet<Value: Identifiable> {
     @usableFromInline
     var storage: [Value.ID: Value]

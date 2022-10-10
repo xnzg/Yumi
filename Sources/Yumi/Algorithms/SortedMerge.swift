@@ -21,10 +21,10 @@ extension Sequence where Element: Comparable {
 }
 
 extension Sequence {
-    /// Returns a new array that merges this sequence with the given sequence
-    /// in an ordered way, allowing merging duplicated elements in the process.
+    /// Returns an array that merges this sequence with another sequence,
+    /// ordered. It can also merge duplicated elements in the output.
     ///
-    /// This is an eager version of `sortedMerging` on `LazySequenceProtocol`.
+    /// For a detailed discussion, see <doc:SortedMerge>.
     ///
     /// - Complexity: `O(n)`
     ///
@@ -35,8 +35,7 @@ extension Sequence {
     ///   - areDuplicates: A predicate that returns `true` if the two elements
     ///   are duplicates and should be merged into one. If `true`,
     ///   `mergeDuplicates` will be called.
-    ///   - mergeDuplicates: A custom function to merge the two elements into
-    ///   one.
+    ///   - mergeDuplicates: A function to merge the two elements into one.
     ///
     /// - Returns: An array of elements from both sequences, ordered.
     @inlinable
@@ -67,25 +66,10 @@ extension Sequence {
 //===----------------------------------------------------------------------===//
 
 extension LazySequenceProtocol {
-    /// Returns a new sequence that merges this sequence with the given sequence
-    /// in an ordered way, allowing merging duplicated elements in the process.
+    /// Returns a new sequence that merges this sequence with another sequence,
+    /// ordered. It can also merge duplicated elements in the output.
     ///
-    /// The two sequences, `self` and `other`, should be sorted with respect
-    /// to `areInAscendingOrder` for the result to be meaningful.
-    ///
-    /// You can use this method to either do a plain merging, like a
-    /// (merge sort)[https://en.wikipedia.org/wiki/Merge_sort], and keep all
-    /// elements from both sequences. Alternatively, you can merge two elements,
-    /// one from each sequence, into one element, like the example below:
-    ///
-    /// ```swift
-    /// let julSales = [("Alex", 10), ("Bob", 20)]
-    /// let augSales = [("Bob", 20), ("Carl", 30)]
-    ///
-    /// let totalSales = julSales.sortedMerging(augSales) { $0.0 < $0.1 }
-    ///   areDuplicates: { $0.0 == $1.0 }
-    ///   mergeDuplicates: { ($0.0, $0.1 + $1.1) }
-    /// ```
+    /// For a detailed discussion, see <doc:SortedMerge>.
     ///
     /// - Complexity: `O(1)`
     ///
@@ -96,8 +80,7 @@ extension LazySequenceProtocol {
     ///   - areDuplicates: A predicate that returns `true` if the two elements
     ///   are duplicates and should be merged into one. If `true`,
     ///   `mergeDuplicates` will be called.
-    ///   - mergeDuplicates: A custom function to merge the two elements into
-    ///   one.
+    ///   - mergeDuplicates: A function to merge the two elements into one.
     ///
     /// - Returns: A sequence of elements from both sequences, ordered.
     @inlinable

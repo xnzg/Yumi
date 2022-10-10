@@ -27,7 +27,7 @@ jobs:
 
       - name: Generate documentation
         run: |
-          OUTPUT=$(PWD)/docs-out/main
+          OUTPUT=$(pwd)/docs-out/main
           swift package --allow-writing-to-directory $OUTPUT \
             generate-documentation --target Yumi \
             --disable-indexing \

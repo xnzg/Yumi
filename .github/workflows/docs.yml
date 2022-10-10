@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - main
-      - docc
 
 jobs:
   build:
@@ -23,7 +22,8 @@ jobs:
           path: docs-out
 
       - name: Clear existing documentation
-        run: rm -rf docs-out/.git && rm -rf docs-out/main && mkdir -p docs-out/main
+        run: |
+          rm -rf docs-out/.git && rm -rf docs-out/main && mkdir -p docs-out/main
 
       - name: Generate documentation
         run: |

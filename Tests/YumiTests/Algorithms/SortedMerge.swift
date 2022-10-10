@@ -16,7 +16,7 @@ final class SortedMergeSequenceTests: XCTestCase {
             rhs.sort()
             var expected = lhs + rhs
             expected.sort()
-            let actual = Array(lhs.sortedMerging(with: rhs))
+            let actual = Array(lhs.sortedMerging(rhs))
             XCTAssertEqual(expected, actual)
         }
     }
@@ -35,7 +35,7 @@ final class SortedMergeSequenceTests: XCTestCase {
             rhs.sort()
             var expected = lhs + rhs
             expected.sort()
-            let actual = Array(lhs.sortedMerging(with: rhs))
+            let actual = Array(lhs.sortedMerging(rhs))
             XCTAssertEqual(expected, actual)
         }
     }
@@ -49,19 +49,31 @@ final class SortedMergeSequenceTests: XCTestCase {
             ("Bob", 3),
             ("Cersei", 4)
         ]
-        var merged: [(String, Int)] = []
 
-        lhs.sortedMerging(with: rhs) {
-            guard $0.0 == $1.0 else {
-                return $0.0 < $1.0 ? .first : .second
-
-            }
-            return .both(($0.0, $0.1 + $1.1))
-        }.forEach {
-            merged.append($0)
+        let merged = lhs.sortedMerging(rhs) {
+            $0.0 < $1.0
+        } areDuplicates: {
+            $0.0 == $1.0
+        } mergeDuplicates: {
+            ($0.0, $0.1 + $1.1)
         }
 
         XCTAssertEqual(merged.map(\.0), ["Alice", "Bob", "Cersei"])
         XCTAssertEqual(merged.map(\.1), [3, 5, 4])
+
+        var lazyMerged: [(String, Int)] = []
+        lhs.lazy.sortedMerging(rhs) {
+            $0.0 < $1.0
+        } areDuplicates: {
+            $0.0 == $1.0
+        } mergeDuplicates: {
+            ($0.0, $0.1 + $1.1)
+        }
+        .forEach {
+            lazyMerged.append($0)
+        }
+
+        XCTAssertEqual(lazyMerged.map(\.0), ["Alice", "Bob", "Cersei"])
+        XCTAssertEqual(lazyMerged.map(\.1), [3, 5, 4])
     }
 }

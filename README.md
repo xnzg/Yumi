@@ -19,7 +19,6 @@ Yumi re-exports some ”official” packages:
 Also some more biased choices:
 - `IdentifiedCollections` from [`swift-identified-collections`](https://github.com/pointfreeco/swift-identified-collections) by [Point-Free](https://www.pointfree.co).
 
-
 ### Collections
 
 - `IdentifiedSet`.

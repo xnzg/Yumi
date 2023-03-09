@@ -4,14 +4,6 @@ import PackageDescription
 
 let package = Package(
     name: "Yumi",
-    platforms: [
-        // For "some" return types.
-        .iOS(.v13),
-        .macOS(.v10_15),
-        .macCatalyst(.v13),
-        .tvOS(.v13),
-        .watchOS(.v6),
-    ],
     products: [
         .library(
             name: "Yumi",
@@ -20,7 +12,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/apple/swift-algorithms", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/apple/swift-collections", .upToNextMajor(from: "1.0.0")),
-        .package(url: "https://github.com/pointfreeco/swift-identified-collections", .upToNextMinor(from: "0.4.0")),
+        .package(url: "https://github.com/pointfreeco/swift-identified-collections", .upToNextMajor(from: "0.4.0")),
         // Plugins
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
     ],

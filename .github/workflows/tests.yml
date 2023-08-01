@@ -12,17 +12,10 @@ jobs:
   Test:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    container:
+      image: swift:5.8.1-jammy
     steps:
       - uses: actions/checkout@v2
-
-      - name: Obtain llvm-cov
-        run: |
-          wget https://apt.llvm.org/llvm.sh
-          chmod +x llvm.sh
-          sudo ./llvm.sh 13
-          which llvm-cov-13
-          sudo ln -s /usr/bin/llvm-cov-13 /usr/bin/llvm-cov
-          which llvm-cov
 
       - name: Run tests
         run: |

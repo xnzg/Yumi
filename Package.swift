@@ -20,7 +20,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/apple/swift-algorithms", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/apple/swift-collections", .upToNextMajor(from: "1.0.0")),
-        .package(url: "https://github.com/pointfreeco/swift-identified-collections", .upToNextMajor(from: "0.4.0")),
+        .package(url: "https://github.com/pointfreeco/swift-identified-collections", from: "1.0.0"),
         // Plugins
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
     ],

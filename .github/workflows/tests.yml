@@ -15,15 +15,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Obtain llvm-cov
-        run: |
-          # We have to use Ubuntu latest, as Ubuntu 22.04 does not have Swift installed.
-          wget https://apt.llvm.org/llvm.sh
-          chmod +x llvm.sh
-          sudo ./llvm.sh 14 
-          which llvm-cov-14
-          sudo ln -s /usr/bin/llvm-cov-14 /usr/bin/llvm-cov
-          which llvm-cov
+      # - name: Obtain llvm-cov
+      #   run: |
+      #     # We have to use Ubuntu latest, as Ubuntu 22.04 does not have Swift installed.
+      #     wget https://apt.llvm.org/llvm.sh
+      #     chmod +x llvm.sh
+      #     sudo ./llvm.sh 14 
+      #     which llvm-cov-14
+      #     sudo ln -s /usr/bin/llvm-cov-14 /usr/bin/llvm-cov
+      #     which llvm-cov
 
       - name: Run tests
         run: |

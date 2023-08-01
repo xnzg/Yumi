@@ -17,6 +17,7 @@ jobs:
 
       - name: Obtain llvm-cov
         run: |
+          wget https://apt.llvm.org/llvm.sh
           chmod +x llvm.sh
           sudo ./llvm.sh 13
           which llvm-cov-13
@@ -28,9 +29,9 @@ jobs:
           swift test --enable-code-coverage
           
       - name: Generate coverage report
-        uses: maxep/spm-lcov-action@0.3.0
-        with:
-          output-file: ./coverage.lcov
+        run: |
+          llvm-cov report $(find . | grep xctest) -instr-profile=$(find . | grep profdata) -ignore-filename-regex=".build"
+          llvm-cov export $(find . | grep xctest) -instr-profile=$(find . | grep profdata) -ignore-filename-regex=".build" -format=lcov > coverage.lcov
 
       - uses: codecov/codecov-action@v3
         with:
